@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@media (max-width: 768px) {
+    .video-mosaic {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 1fr); // Adjust for smaller screens
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .video-mosaic {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(6, 1fr); // Stack videos for mobile
+    }
+  }
+  

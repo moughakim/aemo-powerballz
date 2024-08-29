@@ -1,0 +1,27 @@
+<div>
+    <mat-drawer-container class="drawer-container">
+        <mat-drawer mode="side" opened opened class="drawer">
+            <button mat-icon-button (click)="loadOrders()" matTooltip="Orders" class="drawer-button">
+                <mat-icon>verified</mat-icon>
+              </button>
+              <button mat-icon-button (click)="loadProducts()" matTooltip="Products" class="drawer-button">
+                <mat-icon>fitness_center</mat-icon>
+              </button>
+              <button mat-icon-button (click)="loadCustomers()" matTooltip="Customers" class="drawer-button">
+                <mat-icon>sports_gymnastics</mat-icon>
+              </button>
+              <!-- <button mat-icon-button  matTooltip="work" class="drawer-button">
+                <mat-icon>work</mat-icon>
+              </button>
+              <button mat-icon-button matTooltip="improve" class="drawer-button">
+                <mat-icon>improve</mat-icon>
+              </button> -->
+        </mat-drawer>
+
+        <mat-drawer-content>
+            <app-main-content></app-main-content>
+        </mat-drawer-content>
+        
+      </mat-drawer-container>
+      
+</div>

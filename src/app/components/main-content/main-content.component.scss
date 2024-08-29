@@ -1,0 +1,46 @@
+.main-container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+  }
+  
+  .list-section {
+    // flex: 0 0 90%; /* Set the list-section to 70% of the screen width */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    min-width: 800px; 
+  }
+  
+  .detail-analytics-section {
+    // flex: 0 0 10%; /* Set the detail-analytics-section to 30% of the screen width */
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    min-width: 0; 
+  }
+  
+  
+  .divider {
+    width: 10px;
+    background-color: #ccc;
+    cursor: col-resize;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .detail-analytics-section {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .detail-section, .analytics-section {
+    flex: 1;
+    overflow-y: auto;
+  }
+  
+  mat-divider {
+    height: 2px;
+  }
+  

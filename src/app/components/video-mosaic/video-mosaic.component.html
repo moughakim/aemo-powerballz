@@ -1,0 +1,4 @@
+<div class="video-mosaic">
+    <iframe *ngFor="let video of videos" [src]="video.url | safeUrl" frameborder="0" allowfullscreen></iframe>
+</div>
+  
