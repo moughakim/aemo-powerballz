@@ -30,15 +30,15 @@ export class ItemListComponent implements OnInit {
       case 'orders':
         this.dataSource = this.itemService.getOrders();
         break;
-      case 'products':
-        this.dataSource = this.itemService.getProducts();
-        break;
-      case 'customers':
-        this.dataSource = this.itemService.getCustomers();
-        break;
-      case 'reservations':
-        this.dataSource = this.itemService.getReservations();
-        break;
+      // case 'products':
+      //   this.dataSource = this.itemService.getProducts();
+      //   break;
+      // case 'customers':
+      //   this.dataSource = this.itemService.getCustomers();
+      //   break;
+      // case 'reservations':
+      //   this.dataSource = this.itemService.getReservations();
+      //   break;
       default:
         this.dataSource = [];
         break;

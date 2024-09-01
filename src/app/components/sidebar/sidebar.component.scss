@@ -2,6 +2,7 @@
     height: 100vh; /* Ensure the container takes full height */
     display: flex;
     flex-direction: row; /* Arrange items horizontally */
+    width: 100%;
   }
   
   .drawer {
@@ -9,6 +10,14 @@
     background-color: #f4f4f4; /* Optional: Change to your desired color */
     display: flex;
     flex-direction: column; /* Arrange buttons vertically */
+  }
+
+  .mat-drawer {
+    flex: 0 0 auto;
+  }
+
+  .mat-drawer-content {
+    flex: 1 1 auto;
   }
   
   .drawer-button {

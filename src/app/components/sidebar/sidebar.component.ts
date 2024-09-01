@@ -11,19 +11,16 @@ export class SidebarComponent {
 
   constructor(private itemTypeService: ItemTypeService) {}
 
-  loadOrders(): void {
-    this.itemTypeService.setItemType('orders');
+  loadWods(): void {
+    this.itemTypeService.setItemType('wods');
   }
 
-  loadProducts(): void {
-    this.itemTypeService.setItemType('products');
+  loadChallenges(): void {
+    this.itemTypeService.setItemType('challenges');
   }
 
-  loadCustomers(): void {
-    this.itemTypeService.setItemType('customers');
+  loadActiveRecovery(): void {
+    this.itemTypeService.setItemType('activeRecovery');
   }
 
-  loadReservations(): void {
-    this.itemTypeService.setItemType('reservations');
-  }
 }

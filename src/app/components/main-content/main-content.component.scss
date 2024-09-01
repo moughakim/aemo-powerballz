@@ -4,13 +4,13 @@
     width: 100%;
     position: relative;
   }
-  
+
   .list-section {
     // flex: 0 0 90%; /* Set the list-section to 70% of the screen width */
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    min-width: 800px; 
+     float: left;
   }
   
   .detail-analytics-section {
@@ -18,29 +18,7 @@
     display: flex;
     flex-direction: column;
     overflow-y: auto;
-    min-width: 0; 
+    float: right;
   }
   
-  
-  .divider {
-    width: 10px;
-    background-color: #ccc;
-    cursor: col-resize;
-    position: relative;
-    z-index: 1;
-  }
-  
-  .detail-analytics-section {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .detail-section, .analytics-section {
-    flex: 1;
-    overflow-y: auto;
-  }
-  
-  mat-divider {
-    height: 2px;
-  }
-  
+ 

@@ -2,7 +2,7 @@ import {
   coerceArray,
   coerceElement,
   coerceNumberProperty
-} from "./chunk-DWNA3F4W.js";
+} from "./chunk-LDOSR24N.js";
 import {
   DOCUMENT,
   isPlatformBrowser
@@ -2921,4 +2921,4 @@ export {
   HighContrastModeDetector,
   A11yModule
 };
-//# sourceMappingURL=chunk-NWAXMCM4.js.map
+//# sourceMappingURL=chunk-LPUM57IA.js.map

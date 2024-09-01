@@ -15,6 +15,7 @@ import { ItemService } from './services/item.service';
 import { ItemTypeService } from './services/item-type.service';
 import { VideoMosaicComponent } from './components/video-mosaic/video-mosaic.component';
 import { LeaderBoardComponent } from './components/leader-board/leader-board.component';
+import { WodPanelComponent } from './components/wod-panel/wod-panel.component';
 
 
 
@@ -29,7 +30,8 @@ import { LeaderBoardComponent } from './components/leader-board/leader-board.com
     ItemDetailComponent,
     ItemAnalyticsComponent,
     VideoMosaicComponent,
-    LeaderBoardComponent
+    LeaderBoardComponent,
+    WodPanelComponent
   ],
   imports: [
     CommonModule,
