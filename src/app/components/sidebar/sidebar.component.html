@@ -1,27 +1,19 @@
 <div>
-    <mat-drawer-container class="drawer-container">
-        <mat-drawer mode="side" opened opened class="drawer">
-            <button mat-icon-button (click)="loadWods()" matTooltip="challenge" class="drawer-button">
-                <mat-icon>verified</mat-icon>
-              </button>
-              <button mat-icon-button (click)="loadChallenges()" matTooltip="wods" class="drawer-button">
-                <mat-icon>fitness_center</mat-icon>
-              </button>
-              <button mat-icon-button (click)="loadActiveRecovery()" matTooltip="accessories" class="drawer-button">
-                <mat-icon>sports_gymnastics</mat-icon>
-              </button>
-              <!-- <button mat-icon-button  matTooltip="work" class="drawer-button">
-                <mat-icon>work</mat-icon>
-              </button>
-              <button mat-icon-button matTooltip="improve" class="drawer-button">
-                <mat-icon>improve</mat-icon>
-              </button> -->
-        </mat-drawer>
+  <mat-drawer-container class="drawer-container">
+    <mat-drawer mode="side" opened class="drawer">
+      <button mat-icon-button (click)="loadChallenges()" matTooltip="Challenge" class="drawer-button">
+        <mat-icon>verified</mat-icon>
+      </button>
+      <button mat-icon-button (click)="loadWods()" matTooltip="WODs" class="drawer-button">
+        <mat-icon>fitness_center</mat-icon>
+      </button>
+      <button mat-icon-button (click)="loadActiveRecovery()" matTooltip="Active Recovery" class="drawer-button">
+        <mat-icon>sports_gymnastics</mat-icon>
+      </button>
+    </mat-drawer>
 
-        <mat-drawer-content>
-            <app-main-content></app-main-content>
-        </mat-drawer-content>
-        
-      </mat-drawer-container>
-      
+    <mat-drawer-content>
+      <app-main-content></app-main-content>
+    </mat-drawer-content>
+  </mat-drawer-container>
 </div>

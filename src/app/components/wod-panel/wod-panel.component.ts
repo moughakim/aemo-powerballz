@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 import { Wod } from '../../interfaces/wod';
 import { ItemService } from '../../services/item.service';
 import { ItemTypeService } from '../../services/item-type.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { NotificationHelper } from '../../shared/helpers/notification-helper';
+import { Event } from '@angular/router';
+import { MatInput } from '@angular/material/input';
+import { debounceTime, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-wod-panel',
@@ -13,10 +18,16 @@ export class WodPanelComponent {
 
   constructor(
     private itemService: ItemService,
-    private itemTypeService: ItemTypeService
+    private itemTypeService: ItemTypeService,
+    private notificationHelper: NotificationHelper
   ) {}
  
+  scaleExist: boolean = true;
   currentWod: any;
+  filteredWods: Wod[] =[];
+
+  searchSubject = new Subject<string>();
+  selectedMovement: any = null;
 
   ngOnInit() {
     // Subscribe to item type changes
@@ -24,17 +35,20 @@ export class WodPanelComponent {
       this.loadItems(itemType);
     });
 
-    this.loadItems(null);
-    //  this.currentWod = this.getRandomWod();
-     // this.currentWod = this.itemService.getRandomChallenge();
+    this.loadItems('challenge');
+    
+    this.searchSubject.pipe(debounceTime(300)).subscribe((searchTerm) => {
+      this.filteredWods = this.itemService.searchWodByName(searchTerm);
+    });
   }
 
   loadItems(itemType: string|null): void {
     switch (itemType) {
-      case 'wods':
+      case 'wod':
         this.currentWod = this.itemService.getRandomWod(); 
+        this.scaleExist = true;
         break;
-      case 'challenges':
+      case 'challenge':
         this.currentWod = this.itemService.getRandomChallenge();
         break;
       case 'activeRecovery':
@@ -49,8 +63,61 @@ export class WodPanelComponent {
   }
 
   displayWod(name: string, level: string): void {
-    this.currentWod = this.itemService.getWodByNameAndLevel(name, level);
+    const wod = this.itemService.getWodByNameAndLevel(name, level);
+    if (wod) {
+        this.currentWod = wod;
+      }  else {
+        this.scaleExist = false;
+        this.showNotificationScaleVersionNotExist();
+      }
   }
 
+  showNotificationScaleVersionNotExist(): void {
+    this.notificationHelper.showInfo('Scaled version of the wod is not available', 'Close');
+  }
+
+  refreshWod(): void {
+    if (this.currentWod) {
+      const wodType = this.currentWod.type;
+      this.currentWod = this.itemService.getRandomWodByType(wodType);
+    }
+  }
+
+  onSearch(searchTerm: any): void {
+    if (searchTerm) {
+      this.searchSubject.next(searchTerm.target.value);
+    } else {
+      this.refreshWod(); // Show a random WOD if search is cleared
+    }
+  }
+
+  selectWod(wod: Wod): void {
+    this.currentWod = wod;
+    this.filteredWods = [];
+  }
+
+  clearSearch(): void {
+    this.filteredWods = [];
+    // Refresh
+        this.refreshWod();
+  }
+
+  displayMovementDetails(movement: any): void {
+    this.selectedMovement = movement; // Set the selected movement
+  }
+
+  getParts(content: any[]) :any[]{
+    const partsMap = content.reduce((acc, movement) => {
+      const part = movement.part;
+      if (!acc[part]) {
+        acc[part] = { number: part, movements: [] };
+      }
+      acc[part].movements.push(movement);
+      return acc;
+    }, {});
+  
+    return Object.values(partsMap);
+  }
+  
 
 }

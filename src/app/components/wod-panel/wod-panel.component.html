@@ -1,63 +1,40 @@
-<div class="wod-panel">
-    <div class="wod-card" *ngIf="currentWod as wod">
-      <h2>{{ wod.name }} 
-        <span *ngIf="wod.isBenchMark" class="benchmark-badge">Benchmark</span>
-        <span class="wod-level">{{ wod.level | titlecase }}</span>
-      </h2>
-      <p class="wod-type">Type: {{ wod.type | titlecase }}</p>
-      <p class="wod-execution">Execution Type: {{ wod.executionType | uppercase }}</p>
-      <p class="wod-description">{{ wod.description }}</p>
+<div class="wod-container">
+    <!-- WOD Panel -->
+    <div class="wod-panel">
+      <div class="wod-card" *ngIf="currentWod as wod">
+        <div class="wod-header">
+          <h2>{{ wod.name }} 
+            <span *ngIf="wod.isBenchMark" class="benchmark-badge">Benchmark</span>
+            <span *ngIf="wod.level === 'Rx'" class="rx-badge">Rx</span>
+          </h2>
+          <button mat-icon-button class="refresh-button" aria-label="Refresh WOD" (click)="refreshWod()">
+            <mat-icon>refresh</mat-icon>
+          </button>
+        </div>
+        <p class="wod-type">{{ wod.type | titlecase }}</p>
+        <p class="wod-description">{{ wod.description }}</p>
   
-      <!-- Toggle Button for Rx and Scaled -->
-      <div class="button-toggle-group">
-        <mat-button-toggle-group 
-          [value]="wod.level" 
-          (change)="displayWod(wod.name, $event.value)" 
-          aria-label="WOD Level Toggle">
-          <mat-button-toggle value="Rx">Rx</mat-button-toggle>
-          <mat-button-toggle value="Scaled">Scaled</mat-button-toggle>
-        </mat-button-toggle-group>
-      </div>
+        <!-- Updated WOD Content Grouped by Parts -->
+        <div class="wod-content">
+          <ng-container *ngFor="let part of getParts(wod.content)">
+            <div class="part-section" [ngClass]="'part-' + part.number">
+              <h3>Part {{ part.number }}</h3>
+              <div *ngFor="let item of part.movements" class="wod-item" (click)="displayMovementDetails(item)">
+                <p class="movement">{{ item.movement }} - Reps: {{ item.movementRepetition }}</p>
+              </div>
+            </div>
+          </ng-container>
+        </div>
   
-      <div class="wod-content">
-        <div *ngFor="let item of wod.content" class="wod-item" [ngClass]="'part-' + item.part">
-          <p class="movement"><strong>{{ item.movement }}</strong> - Reps: {{ item.movementRepetition }}</p>
-  
-          <p *ngIf="item.weight?.male || item.weight?.female" class="weight">Weight: 
-            <span>{{ item.weight?.male }} lbs/{{ item.weight?.female }} lbs</span>
-          </p>
-          <p *ngIf="item.height?.male || item.height?.female" class="height">Height: 
-            <span>{{ item.height?.male }} inches/{{ item.height?.female }} inches</span>
-          </p>
-          <p *ngIf="item.distance?.male || item.distance?.female" class="distance">Distance: 
-            <span>{{ item.distance?.male }} meters/{{ item.distance?.female }} meters</span>
-          </p>
-          <p *ngIf="item.calories?.male || item.calories?.female" class="calories">Calories: 
-            <span>{{ item.calories?.male }}/{{ item.calories?.female }}</span>
-          </p>
-  
-          <p class="transition-time">Transition Time: 
-            <span>Beginner: {{ item.transitionTime.beginner }}</span>, 
-            <span>Intermediate: {{ item.transitionTime.intermediate }}</span>, 
-            <span>Rx: {{ item.transitionTime.rx }}</span>, 
-            <span>Pro: {{ item.transitionTime.pro }}</span>
-          </p>
-  
-          <p class="time-to-completion">Time to Completion: 
-            <span>Beginner: {{ item.targetTimeToCompletion.beginner }}</span>, 
-            <span>Intermediate: {{ item.targetTimeToCompletion.intermediate }}</span>, 
-            <span>Rx: {{ item.targetTimeToCompletion.rx }}</span>, 
-            <span>Pro: {{ item.targetTimeToCompletion.pro }}</span>
-          </p>
+        <div class="wod-details">
+          <p><strong>Target Muscle Groups:</strong> {{ wod.targetMuscleGroups.join(', ') }}</p>
+          <p><strong>Skill Level:</strong> {{ wod.skillLevel | titlecase }}</p>
+          <p><strong>Equipment Needed:</strong> {{ wod.equipmentNeeded.join(', ') }}</p>
         </div>
       </div>
-  
-      <div class="wod-details">
-        <p><strong>Target Muscle Groups:</strong> {{ wod.targetMuscleGroups.join(', ') }}</p>
-        <p><strong>Skill Level:</strong> {{ wod.skillLevel | titlecase }}</p>
-        <p><strong>Equipment Needed:</strong> {{ wod.equipmentNeeded.join(', ') }}</p>
-        <p class="notes"><strong>Notes:</strong> {{ wod.notes }}</p>
-      </div>
     </div>
+  
+    <!-- Movement Details Component -->
+    <app-movement-details *ngIf="selectedMovement" [movement]="selectedMovement"></app-movement-details>
   </div>
   

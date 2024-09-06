@@ -12,11 +12,11 @@ export class SidebarComponent {
   constructor(private itemTypeService: ItemTypeService) {}
 
   loadWods(): void {
-    this.itemTypeService.setItemType('wods');
+    this.itemTypeService.setItemType('wod');
   }
 
   loadChallenges(): void {
-    this.itemTypeService.setItemType('challenges');
+    this.itemTypeService.setItemType('challenge');
   }
 
   loadActiveRecovery(): void {

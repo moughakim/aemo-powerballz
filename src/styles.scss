@@ -16,4 +16,26 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
       grid-template-rows: repeat(6, 1fr); // Stack videos for mobile
     }
   }
+
+  /* styles.css or any global stylesheet */
+.success-snackbar {
+  background-color: #4caf50; /* Green */
+  color: #fff;
+}
+
+.error-snackbar {
+  background-color: #f44336; /* Red */
+  color: #fff;
+}
+
+.info-snackbar {
+  background-color: #2196f3; /* Blue */
+  color: #fff;
+}
+
+.warning-snackbar {
+  background-color: #ff9800; /* Orange */
+  color: #fff;
+}
+
   

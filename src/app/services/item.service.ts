@@ -1093,6 +1093,196 @@ export class ItemService {
       skillLevel: 'Advanced',
       equipmentNeeded: ['Echo Bike'],
       notes: 'Push hard from the start and try to maintain a steady pace to reach the target calories within the time limit.'
+    },
+    {
+      id: 12,
+      name: 'Hang on Bar with One Arm',
+      type: 'challenge',
+      level: 'Rx',
+      isBenchMark: false,
+      duration: '100s', // or as long as possible
+      executionType: 'for-time',
+      description: 'Hang on a bar with one arm for 100 seconds or as long as possible.',
+      targetTimeToCompletion: {
+        beginner: '30s',
+        intermediate: '60s',
+        rx: '100s',
+        pro: 'as long as possible'
+      },
+      content: [
+        {
+          movement: 'Hang on Bar with One Arm',
+          movementDuration: '100s',
+          movementRepetition: null,
+          distance: null,
+          calories: null,
+          weight: null,
+          height: null,
+          machine: 'pull-up bar',
+          movementType: '',
+          part: 1,
+          transitionTime: {
+            beginner: '0:00',
+            intermediate: '0:00',
+            rx: '0:00',
+            pro: '0:00'
+          },
+          targetTimeToCompletion: {
+            beginner: '30s',
+            intermediate: '60s',
+            rx: '100s',
+            pro: 'as long as possible'
+          }
+        }
+      ],
+      targetMuscleGroups: ['Grip', 'Shoulders', 'Core'],
+      skillLevel: 'Advanced',
+      equipmentNeeded: ['Pull-Up Bar'],
+      notes: 'Focus on maintaining a strong grip and stable core throughout the duration.'
+    },
+    {
+      id: 13,
+      name: 'Hold 2 Plates of 45 lbs on Each Hand',
+      type: 'challenge',
+      level: 'Rx',
+      isBenchMark: false,
+      duration: '1:00', // 1 minute
+      executionType: 'for-time',
+      description: 'Hold 2 plates of 45 lbs on each hand just by your fingers for one minute.',
+      targetTimeToCompletion: {
+        beginner: '20s',
+        intermediate: '40s',
+        rx: '1:00',
+        pro: 'as long as possible'
+      },
+      content: [
+        {
+          movement: 'Plate Hold',
+          movementDuration: '1:00',
+          movementRepetition: null,
+          distance: null,
+          calories: null,
+          weight: {
+            male: '45 lbs per hand',
+            female: '45 lbs per hand'
+          },
+          height: null,
+          machine: null,
+          movementType: '',
+          part: 1,
+          transitionTime: {
+            beginner: '0:00',
+            intermediate: '0:00',
+            rx: '0:00',
+            pro: '0:00'
+          },
+          targetTimeToCompletion: {
+            beginner: '20s',
+            intermediate: '40s',
+            rx: '1:00',
+            pro: 'as long as possible'
+          }
+        }
+      ],
+      targetMuscleGroups: ['Grip', 'Forearms'],
+      skillLevel: 'Advanced',
+      equipmentNeeded: ['2 x 45 lbs Plates'],
+      notes: 'Focus on maintaining a strong grip, ensuring your fingers are doing all the work.'
+    },
+    {
+      id: 14,
+      name: 'One-Leg Chair on Wall',
+      type: 'challenge',
+      level: 'Rx',
+      isBenchMark: false,
+      duration: '1:00', // 1 minute
+      executionType: 'for-time',
+      description: 'Hold a one-leg chair position on the wall for one minute.',
+      targetTimeToCompletion: {
+        beginner: '20s',
+        intermediate: '40s',
+        rx: '1:00',
+        pro: 'as long as possible'
+      },
+      content: [
+        {
+          movement: 'One-Leg Chair on Wall',
+          movementDuration: '1:00',
+          movementRepetition: null,
+          distance: null,
+          calories: null,
+          weight: null,
+          height: null,
+          machine: null,
+          movementType: '',
+          part: 1,
+          transitionTime: {
+            beginner: '0:00',
+            intermediate: '0:00',
+            rx: '0:00',
+            pro: '0:00'
+          },
+          targetTimeToCompletion: {
+            beginner: '20s',
+            intermediate: '40s',
+            rx: '1:00',
+            pro: 'as long as possible'
+          }
+        }
+      ],
+      targetMuscleGroups: ['Legs', 'Core'],
+      skillLevel: 'Intermediate',
+      equipmentNeeded: ['Wall'],
+      notes: 'Focus on keeping the back flat against the wall and maintaining balance on one leg.'
+    },
+    {
+      id: 15,
+      name: '25 D-Ball Over Shoulder',
+      type: 'challenge',
+      level: 'Rx',
+      isBenchMark: false,
+      duration: '1:00', // 1 minute or max reps
+      executionType: 'for-reps',
+      description: 'Perform 25 D-ball of 90 lbs over the shoulder in less than 1 minute or as many reps as possible.',
+      targetTimeToCompletion: {
+        beginner: '10 reps',
+        intermediate: '15 reps',
+        rx: '25 reps',
+        pro: 'max reps'
+      },
+      content: [
+        {
+          movement: 'D-Ball Over Shoulder',
+          movementDuration: '1:00',
+          movementRepetition: 25,
+          distance: null,
+          calories: null,
+          weight: {
+            male: '90 lbs',
+            female: '90 lbs'
+          },
+          height: null,
+          machine: null,
+          movementType: '',
+          part: 1,
+          transitionTime: {
+            beginner: '0:00',
+            intermediate: '0:00',
+            rx: '0:00',
+            pro: '0:00'
+          },
+          targetTimeToCompletion: {
+            beginner: '10 reps',
+            intermediate: '15 reps',
+            rx: '25 reps',
+            pro: 'max reps'
+          }
+        }
+      ],
+      targetMuscleGroups: ['Full Body', 'Legs', 'Core', 'Shoulders'],
+      skillLevel: 'Advanced',
+      equipmentNeeded: ['90 lbs D-Ball'],
+      notes: 'Explode through the hips to get the ball over your shoulder, and keep a steady pace to maximize reps.'
     }
   ];
 
@@ -1112,13 +1302,28 @@ export class ItemService {
     return this.wods.find(wod => wod.name === name);
   }
 
+  searchWodByName(name: string): Wod[] {
+    return this.wods.filter(wod => wod.name.toLowerCase().includes(name.toLowerCase()));
+  }
+
+
   getWodByNameAndLevel(name: string, level: string): Wod | undefined {
     return this.wods.find(wod => wod.name === name && wod.level === level);
   }
 
   getRandomChallenge(): Wod | undefined {
     const challenges = this.wods.filter(wod => wod.type === 'challenge');
+
+    if (challenges.length === 0) {
+      return this.getRandomWod();
+    }
+
     return challenges[Math.floor(Math.random() * challenges.length)];
+  }
+
+  getRandomWodByType(type: string): Wod | undefined {
+    const filtredWods = this.wods.filter(wod => wod.type === type)
+    return filtredWods[Math.floor(Math.random() * filtredWods.length)];
   }
 
   getRandomActiveRecovery(): Wod | undefined {
