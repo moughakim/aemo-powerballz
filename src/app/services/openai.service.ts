@@ -8,8 +8,7 @@ import { Observable } from 'rxjs';
 export class OpenaiService {
 
   private apiUrl = 'https://api.openai.com/v1/chat/completions';
-  private apiKey: string = `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`;
-  
+
   constructor(private http: HttpClient) { }
 
   // Method to send a question to ChatGPT 4 and get a response
