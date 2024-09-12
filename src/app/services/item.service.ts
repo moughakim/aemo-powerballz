@@ -1331,4 +1331,14 @@ export class ItemService {
     return activeRecoveries[Math.floor(Math.random() * activeRecoveries.length)];
   }
 
+  getRandomItem(item:string | null): Wod | undefined {
+    if (!item) {
+      return this.getRandomWod();
+    }
+    
+    const items = this.wods.filter(wod => wod.type === item);
+    return items[Math.floor(Math.random() * items.length)];
+  }
+
+
 }

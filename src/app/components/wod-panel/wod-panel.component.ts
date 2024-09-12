@@ -43,29 +43,25 @@ export class WodPanelComponent {
   }
 
   loadItems(itemType: string|null): void {
+    console.log('itemType', itemType);
+    this.selectedMovement = null;
     switch (itemType) {
       case 'wod':
-        this.currentWod = this.itemService.getRandomWod(); 
         this.scaleExist = true;
         break;
-      case 'challenge':
-        this.currentWod = this.itemService.getRandomChallenge();
-        break;
-      case 'activeRecovery':
-        this.currentWod = this.itemService.getRandomActiveRecovery();
-        break;
+
       default:
-        this.currentWod = this.itemService.getRandomWod(); 
-        // this.currentWod = this.itemService.getRandomChallenge();
+        this.currentWod = this.itemService.getRandomItem(itemType); 
         break;
     }
-
+    this.currentWod = this.itemService.getRandomItem(itemType); 
   }
 
   displayWod(name: string, level: string): void {
     const wod = this.itemService.getWodByNameAndLevel(name, level);
     if (wod) {
         this.currentWod = wod;
+        this.selectedMovement = null;
       }  else {
         this.scaleExist = false;
         this.showNotificationScaleVersionNotExist();
@@ -80,6 +76,7 @@ export class WodPanelComponent {
     if (this.currentWod) {
       const wodType = this.currentWod.type;
       this.currentWod = this.itemService.getRandomWodByType(wodType);
+      this.selectedMovement = null;
     }
   }
 

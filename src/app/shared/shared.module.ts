@@ -4,10 +4,11 @@ import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SafeUrlPipe } from './safe-url.pipe';
+import { SafeHtmlPipe } from './safe-html.pipe';
 
 
 @NgModule({
-  declarations: [SafeUrlPipe],
+  declarations: [SafeUrlPipe, SafeHtmlPipe],
   imports: [
     CommonModule,
     MaterialModule,
@@ -18,7 +19,8 @@ import { SafeUrlPipe } from './safe-url.pipe';
     MaterialModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    SafeUrlPipe
+    SafeUrlPipe,
+    SafeHtmlPipe
   ]
 })
 export class SharedModule { }

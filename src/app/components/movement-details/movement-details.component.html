@@ -1,36 +1,21 @@
 <div class="movement-details" *ngIf="movement">
     <h3>{{ movement.movement }} Details</h3>
-    
+  
+    <!-- Movement info -->
     <div class="movement-info">
       <p><strong>Reps:</strong> {{ movement.movementRepetition }}</p>
-  
       <p *ngIf="movement.weight?.male || movement.weight?.female">
         <strong>Weight:</strong> {{ movement.weight?.male }} lbs / {{ movement.weight?.female }} lbs
       </p>
-  
-      <p *ngIf="movement.height?.male || movement.height?.female">
-        <strong>Height:</strong> {{ movement.height?.male }} inches / {{ movement.height?.female }} inches
+      <p *ngIf="movement.machine">
+        <strong>Machine:</strong> {{ movement.machine }}
       </p>
+    </div>
   
-      <div class="transition-time">
-        <strong>Transition Time:</strong>
-        <ul>
-          <li>Beginner: {{ movement.transitionTime?.beginner }}</li>
-          <li>Intermediate: {{ movement.transitionTime?.intermediate }}</li>
-          <li>Rx: {{ movement.transitionTime?.rx }}</li>
-          <li>Pro: {{ movement.transitionTime?.pro }}</li>
-        </ul>
-      </div>
-  
-      <div class="completion-time">
-        <strong>Target Time to Completion:</strong>
-        <ul>
-          <li>Beginner: {{ movement.targetTimeToCompletion?.beginner }}</li>
-          <li>Intermediate: {{ movement.targetTimeToCompletion?.intermediate }}</li>
-          <li>Rx: {{ movement.targetTimeToCompletion?.rx }}</li>
-          <li>Pro: {{ movement.targetTimeToCompletion?.pro }}</li>
-        </ul>
-      </div>
+    <!-- Beautified ChatGPT Response -->
+    <div class="chat-response" *ngIf="chatResponse">
+      <h4>Coaching Advice</h4>
+      <div [innerHTML]="chatResponse | safeHtml"></div> <!-- Use innerHTML to render any markup from the response -->
     </div>
   </div>
   

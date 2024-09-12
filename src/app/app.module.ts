@@ -17,6 +17,7 @@ import { VideoMosaicComponent } from './components/video-mosaic/video-mosaic.com
 import { LeaderBoardComponent } from './components/leader-board/leader-board.component';
 import { WodPanelComponent } from './components/wod-panel/wod-panel.component';
 import { MovementDetailsComponent } from './components/movement-details/movement-details.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -40,7 +41,8 @@ import { MovementDetailsComponent } from './components/movement-details/movement
     BrowserModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [ItemService, ItemTypeService],
   bootstrap:[AppComponent]
